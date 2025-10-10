@@ -27,23 +27,23 @@ struct MovieCarouselView: View {
         VStack(alignment: .leading, spacing: 2) {
           Text(category.titleText())
             .font(.title.bold())
-          
           ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 8) {
               ForEach(movieresponse.results, id: \.id) { movie in
-                MovieCardView(movie: movie, type: cardType)
+                NavigationLink( destination: MovieDetailView(movie: movie) ) {
+                  MovieCardView(movie: movie, type: cardType)
+                }
               }
             }
             .padding(.horizontal, 4)
           }
         }
       } else {
-        // Пока данные не загрузились — показываем кастомный индикатор
-        LoadView(text: "Загрузка фильмов...")
+        LoadView(text: "Loading...")
       }
     }
     .frame(maxWidth: .infinity)
-    .padding(2) // минимальный общий padding
+    .padding(2)
     .onAppear {
       movieProvider.request(.movieList(category: category, page: 1)) { result in
         switch result {
@@ -117,28 +117,3 @@ struct MovieCardView: View {
 
 
 
-
-//struct MovieCardView: View {
-//    let movie: Movie
-//    
-//    var body: some View {
-//        VStack(alignment: .leading, spacing: 2) {
-//            WebImage(url: movie.posterURL) // вертикальный постер 2:3
-//                .resizable()
-//                .scaledToFill()
-//                .frame(width: 200, height: 300)
-//                .clipShape(RoundedRectangle(cornerRadius: 8))
-//                .shadow(radius: 3)
-//            
-//            Text(movie.originalTitle)
-//                .font(.caption)
-//                .lineLimit(1)
-//                .minimumScaleFactor(0.5)
-//        }
-//        .frame(width: 200) // фиксированная ширина карточки
-//    }
-//}
-
-//#Preview {
-//  MovieCarouselView(category: .nowPlaying)
-//}

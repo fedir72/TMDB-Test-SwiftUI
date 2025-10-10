@@ -12,7 +12,7 @@ import Foundation
 // MARK: - MovieResponse
 struct MovieResponse: Codable, Identifiable {
     let id = UUID().uuidString
-    let dates: Dates?            // optional, только для upcoming/now_playing
+    let dates: Dates?
     let page: Int
     let results: [Movie]
     let totalPages: Int
@@ -32,7 +32,7 @@ struct Dates: Codable {
 }
 
 // MARK: - Movie
-struct Movie: Codable {
+struct Movie: Codable , Identifiable , Equatable {
     let adult: Bool
     let backdropPath: String?        // optional, может быть null
     let genreIDs: [Int]
@@ -63,6 +63,10 @@ struct Movie: Codable {
         case voteCount = "vote_count"
     }
   
+  //Equatable
+  static func == (lhs: Movie, rhs: Movie) -> Bool {
+      lhs.id == rhs.id
+  }
 }
 
 extension Movie {

@@ -11,8 +11,9 @@ import SwiftUI
 struct TMDB_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-         // MovieCarouselView(category: .nowPlaying)
-          MovieHomeView()
+          StartTabbarView()
+         // MovieSearchView()
+          
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ЬщмшуВуефшдіЬщвуді.swift
+//  MovieDetailsModels.swift
 //  TMDB-SwiftUI
 //
 //  Created by ihor fedii on 04.10.25.
@@ -49,7 +49,9 @@ struct MovieDetail: Codable, Identifiable {
         case productionCompanies = "production_companies"
         case productionCountries = "production_countries"
         case releaseDate = "release_date"
-        case revenue, runtime, status, tagline, voteAverage = "vote_average", voteCount = "vote_count"
+        case revenue, runtime, status, tagline
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
         case spokenLanguages = "spoken_languages"
     }
   
@@ -82,10 +84,10 @@ struct CollectionInfo: Codable {
     }
 }
 
-struct Genre: Codable {
-    let id: Int?
-    let name: String?
-}
+//struct Genre: Codable {
+//    let id: Int?
+//    let name: String?
+//}
 
 struct ProductionCompany: Codable {
     let id: Int?

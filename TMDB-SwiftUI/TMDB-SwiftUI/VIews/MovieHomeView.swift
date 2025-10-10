@@ -11,10 +11,10 @@ struct MovieHomeView: View {
     var body: some View {
       NavigationView {
         List {
-          MovieCarouselView(category: .upcoming, cardType: .poster)
+          MovieCarouselView(category: .upcoming,   cardType: .poster)
           MovieCarouselView(category: .nowPlaying, cardType: .backdrop)
-          MovieCarouselView(category: .topRated, cardType: .poster)
-          MovieCarouselView(category: .popular, cardType: .backdrop)
+          MovieCarouselView(category: .topRated,   cardType: .poster)
+          MovieCarouselView(category: .popular,    cardType: .backdrop)
             .listRowSeparator(.visible)
             .listStyle(.plain)
         }

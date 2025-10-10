@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		885409DA2E9017E100BE3DF4 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 885409D92E9017E100BE3DF4 /* Moya */; };
+		8868D3C02E9549CC0028D816 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868D3BF2E9549CC0028D816 /* File.swift */; };
 		88A6596B2E91578C001FAC47 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 88A6596A2E91578C001FAC47 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		885409C92E90164400BE3DF4 /* TMDB-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TMDB-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8868D3BF2E9549CC0028D816 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -41,6 +43,7 @@
 			children = (
 				885409CB2E90164400BE3DF4 /* TMDB-SwiftUI */,
 				885409CA2E90164400BE3DF4 /* Products */,
+				8868D3BF2E9549CC0028D816 /* File.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8868D3C02E9549CC0028D816 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

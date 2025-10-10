@@ -14,10 +14,10 @@ import Moya
 //https://api.themoviedb.org/3/search/multi?query={query}&api_key=2f3a88e5c9dde5f1837f7134848c4432
 //https://api.themoviedb.org/3/movie/{movie_id}?api_key=2f3a88e5c9dde5f1837f7134848c4432              // info about film by film id
 //https://api.themoviedb.org/3/discover/movie?...&api_key=2f3a88e5c9dde5f1837f7134848c4432
-//https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={API_KEY}
+//https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={2f3a88e5c9dde5f1837f7134848c4432
 //https://api.themoviedb.org/3/movie/latest?api_key={API_KEY}                   //last loaded to database film
 
-
+//https://api.themoviedb.org/3/search/movie?api_key=2f3a88e5c9dde5f1837f7134848c4432&language=en-US&query=matrix&page=1&include_adult=false
 
 //  now_playing, popular, top_rated, upcoming
 //  https://api.themoviedb.org/3/movie/upcoming?api_key=2f3a88e5c9dde5f1837f7134848c4432&language=en-US&page=1
@@ -40,11 +40,6 @@ enum MovieListCategory: String , CaseIterable {
       return "Popular"
     }
   }
-}
-
-// MARK: - API Key storage
-enum APIKeys {
-    static let tmdb = "2f3a88e5c9dde5f1837f7134848c4432" // 🔑 Insert your TMDb API key here
 }
 
 // MARK: - TMDb API Target
@@ -127,5 +122,7 @@ extension MovieAPI: TargetType {
 //    NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
 //])
 
-
-
+// MARK: - API Key storage
+enum APIKeys {
+    static let tmdb = "2f3a88e5c9dde5f1837f7134848c4432" // 🔑 Insert your TMDb API key here
+}
