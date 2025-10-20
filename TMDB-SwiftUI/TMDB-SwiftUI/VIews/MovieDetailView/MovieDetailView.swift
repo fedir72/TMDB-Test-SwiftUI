@@ -118,7 +118,6 @@ struct MovieDetailView: View {
           .foregroundColor(.secondary)
       }
     }
-    .navigationTitle(viewModel.movieDetail?.title ?? "Movie")
     .navigationBarTitleDisplayMode(.inline)
     
   }

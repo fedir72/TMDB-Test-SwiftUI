@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MovieHomeView: View {
+struct MovieDashboardView: View {
     var body: some View {
       NavigationView {
         List {
@@ -15,9 +15,10 @@ struct MovieHomeView: View {
           MovieCarouselView(category: .nowPlaying, cardType: .backdrop)
           MovieCarouselView(category: .topRated,   cardType: .poster)
           MovieCarouselView(category: .popular,    cardType: .backdrop)
-            .listRowSeparator(.visible)
-            .listStyle(.plain)
+          
         }
+        .listRowSeparator(.visible)
+        .listStyle(.plain)
         .padding(.horizontal, -10)
         .navigationTitle("The Movie Database")
       }
@@ -25,5 +26,5 @@ struct MovieHomeView: View {
 }
 
 #Preview {
-    MovieHomeView()
+    MovieDashboardView()
 }
