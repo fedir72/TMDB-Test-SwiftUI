@@ -55,13 +55,12 @@ struct MovieDetail: Codable, Identifiable {
         case spokenLanguages = "spoken_languages"
     }
   
-  // MARK: - Computed property для полного Backdrop URL
   var backdropURL: URL? {
       guard let path = backdropPath else { return nil }
       return URL(string: "https://image.tmdb.org/t/p/w780\(path)")
   }
   
-  // Для постера можно сделать аналогично
+
   var posterURL: URL? {
       guard let path = posterPath else { return nil }
       return URL(string: "https://image.tmdb.org/t/p/w500\(path)")
@@ -83,11 +82,6 @@ struct CollectionInfo: Codable {
         case backdropPath = "backdrop_path"
     }
 }
-
-//struct Genre: Codable {
-//    let id: Int?
-//    let name: String?
-//}
 
 struct ProductionCompany: Codable {
     let id: Int?

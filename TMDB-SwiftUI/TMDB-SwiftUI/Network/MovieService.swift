@@ -22,6 +22,9 @@ import Moya
 //  now_playing, popular, top_rated, upcoming
 //  https://api.themoviedb.org/3/movie/upcoming?api_key=2f3a88e5c9dde5f1837f7134848c4432&language=en-US&page=1
 // MARK: - Categories of Movie Lists
+
+//https://api.themoviedb.org/3/movie/1038392/videos?api_key=2f3a88e5c9dde5f1837f7134848c4432&language=en-US
+
 enum MovieListCategory: String , CaseIterable {
   case nowPlaying = "now_playing"
   case upcoming = "upcoming"
@@ -56,6 +59,8 @@ enum MovieAPI {
     case reviews(id: Int, page: Int = 1)
     /// Get images (posters, backdrops)
     case images(id: Int)
+    /// Get videos (trailers, teasers, featurettes, etc.)
+    case videos(id: Int)
 }
 
 extension MovieAPI: TargetType {
@@ -79,6 +84,8 @@ extension MovieAPI: TargetType {
             return "/movie/\(id)/reviews"
         case .images(let id):
             return "/movie/\(id)/images"
+        case .videos(let id):
+            return "/movie/\(id)/videos" //
         }
     }
     
@@ -108,7 +115,6 @@ extension MovieAPI: TargetType {
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }
     
-    /// Headers
     var headers: [String : String]? {
         return ["Content-Type": "application/json"]
     }
@@ -117,10 +123,6 @@ extension MovieAPI: TargetType {
         return Data()
     }
 }
-
-//let movieProvider = MoyaProvider<MovieAPI>(plugins: [
-//    NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
-//])
 
 // MARK: - API Key storage
 enum APIKeys {

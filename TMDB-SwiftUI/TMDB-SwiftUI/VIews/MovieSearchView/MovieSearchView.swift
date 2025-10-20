@@ -26,7 +26,7 @@ struct MovieSearchView: View {
           showLoadPreviousButton = false
         }
         
-        //MARK: - infoAboutResults()
+        //MARK: - infoAboutResults
         infoAboutResults()
         ScrollViewReader { proxy in
           ScrollView {
@@ -41,7 +41,7 @@ struct MovieSearchView: View {
               }
               //MARK: - films list
               ForEach(viewModel.movies, id: \.id) { movie in
-                NavigationLink(destination: MovieDetailView(movie: movie)) {
+                NavigationLink(destination: MovieDetailView(movieID: movie.id)) {
                   MovieRowView(movie: movie)
                     .onAppear {
                       if movie.id == viewModel.movies.last?.id {
@@ -62,7 +62,7 @@ struct MovieSearchView: View {
                   color: .blue
                 ) {
                   viewModel.loadNextPage()
-                  //MARK: scroll to first element of list
+                  //MARK: - scroll to first element of list
                   if let firstMovieID = viewModel.movies.first?.id {
                     withAnimation(.easeIn) { proxy.scrollTo(firstMovieID, anchor: .top) }
                   }
@@ -82,13 +82,13 @@ struct MovieSearchView: View {
       .navigationTitle("Movie Search")
     }
   }
+  
 }
-
   
+private extension MovieSearchView {
   
-fileprivate extension MovieSearchView {
-  
-  //MARK: - UI functions
+  ///MARK: - UI functions
+  //MARK: - searchBar()
   @ViewBuilder
   func searchBar(query: Binding<String>,
                  onSearch: @escaping () -> Void) -> some View {
@@ -98,6 +98,10 @@ fileprivate extension MovieSearchView {
         .padding(.vertical, 10)
         .background(Color(.systemGray5))
         .clipShape(Capsule())
+        .onSubmit { onSearch() }
+        // Changes the keyboard key text from “Return” to “Search”, which makes the UX more logical.
+        .submitLabel(.search)
+      
       Button(action: onSearch) {
         Image(systemName: "magnifyingglass")
           .font(.title2)
@@ -110,7 +114,7 @@ fileprivate extension MovieSearchView {
     }
     .padding()
   }
-  
+  //MARK: - infoAboutResults()
   @ViewBuilder
   func infoAboutResults() -> some View {
     if !viewModel.movies.isEmpty {
@@ -128,6 +132,7 @@ fileprivate extension MovieSearchView {
     }
   }
   
+  //MARK: - loadButton()
   func loadButton(
     title: String,
     systemImage: String,

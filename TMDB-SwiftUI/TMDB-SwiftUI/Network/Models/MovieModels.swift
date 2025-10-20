@@ -34,14 +34,14 @@ struct Dates: Codable {
 // MARK: - Movie
 struct Movie: Codable , Identifiable , Equatable {
     let adult: Bool
-    let backdropPath: String?        // optional, может быть null
-    let genreIDs: [Int]
+    let backdropPath: String?        // optional
+    let genreIDs: [Int]?
     let id: Int
     let originalLanguage: String?    // optional
     let originalTitle: String
     let overview: String?
     let popularity: Double?
-    let posterPath: String?          // optional, может быть null
+    let posterPath: String?          // optional
     let releaseDate: String?
     let title: String
     let video: Bool?
