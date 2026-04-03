@@ -44,7 +44,7 @@ struct MovieCarouselView: View {
                     }
                 }
             } else if viewModel.isLoading {
-                LoadView(text: "Loading...")
+                Text("Loading...")
             } else if let error = viewModel.errorMessage {
                 Text(error)
                     .foregroundColor(.red)

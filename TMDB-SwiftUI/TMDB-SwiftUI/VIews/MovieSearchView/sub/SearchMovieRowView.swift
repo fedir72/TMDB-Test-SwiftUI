@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct MovieRowView: View {
+struct SearchMovieRowView: View {
     let movie: Movie
     
   var body: some View {
