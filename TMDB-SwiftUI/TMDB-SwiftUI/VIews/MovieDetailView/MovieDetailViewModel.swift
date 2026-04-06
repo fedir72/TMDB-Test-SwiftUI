@@ -25,7 +25,6 @@ final class MovieDetailViewModel: ObservableObject {
 
     // MARK: - Init
     init(movieID: Int) {
-        // Все ответы Moya теперь приходят в главный поток
         self.provider = MoyaProvider<MovieAPI>(callbackQueue: .main)
         self.movieID = movieID
         loadDetails()
@@ -46,7 +45,8 @@ final class MovieDetailViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 do {
-                    let decoded = try JSONDecoder().decode(MovieDetail.self, from: response.data)
+                    let decoded = try JSONDecoder().decode(MovieDetail.self,
+                                                           from: response.data)
                     self.movieDetail = decoded
                 } catch {
                     self.errorMessage = "Failed to decode movie details"

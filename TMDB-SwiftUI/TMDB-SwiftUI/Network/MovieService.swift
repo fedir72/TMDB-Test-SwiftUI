@@ -7,8 +7,6 @@
 
 import Foundation
 import Moya
-import Foundation
-import Moya
 
 //https://api.themoviedb.org/3/search/movie?query={query}&aapi_key=2f3a88e5c9dde5f1837f7134848c4432
 //https://api.themoviedb.org/3/search/multi?query={query}&api_key=2f3a88e5c9dde5f1837f7134848c4432
@@ -85,7 +83,7 @@ extension MovieAPI: TargetType {
         case .images(let id):
             return "/movie/\(id)/images"
         case .videos(let id):
-            return "/movie/\(id)/videos" //
+            return "/movie/\(id)/videos"
         }
     }
     
@@ -126,5 +124,5 @@ extension MovieAPI: TargetType {
 
 // MARK: - API Key storage
 enum APIKeys {
-    static let tmdb = "2f3a88e5c9dde5f1837f7134848c4432" // 🔑 Insert your TMDb API key here
+    static let tmdb = "2f3a88e5c9dde5f1837f7134848c4432"
 }

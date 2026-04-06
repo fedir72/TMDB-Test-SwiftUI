@@ -18,15 +18,13 @@ struct SearchMovieRowView: View {
          let url = URL(string: "https://image.tmdb.org/t/p/w200\(path)") {
         WebImage(url: url)
           .resizable()
-          .scaledToFill()
+          .scaledToFit()
           .frame(width: 80, height: 120)
           .cornerRadius(8)
           .clipped()
       } else {
         Image(systemName: "photo.circle.fill")
-          .resizable()
-          .scaledToFill()
-          .frame(width: 80, height: 80)
+          .resizedToFill(width: 80, height: 80)
           .cornerRadius(8)
           .clipped()
           .foregroundColor(.gray.opacity(0.5))

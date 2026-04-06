@@ -10,8 +10,7 @@ import Foundation
 import Foundation
 
 // MARK: - MovieResponse
-struct MovieResponse: Codable, Identifiable {
-    let id = UUID().uuidString
+struct MovieResponse: Codable {
     let dates: Dates?
     let page: Int
     let results: [Movie]
@@ -34,14 +33,14 @@ struct Dates: Codable {
 // MARK: - Movie
 struct Movie: Codable , Identifiable , Equatable {
     let adult: Bool
-    let backdropPath: String?        // optional
+    let backdropPath: String?
     let genreIDs: [Int]?
     let id: Int
-    let originalLanguage: String?    // optional
+    let originalLanguage: String?
     let originalTitle: String
     let overview: String?
     let popularity: Double?
-    let posterPath: String?          // optional
+    let posterPath: String?
     let releaseDate: String?
     let title: String
     let video: Bool?

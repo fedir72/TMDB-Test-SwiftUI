@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 enum CardType {
     case poster
@@ -28,7 +27,7 @@ struct MovieCarouselView: View {
     var body: some View {
         VStack(spacing: 0) {
             if !viewModel.movies.isEmpty {
-                // Карусель фильмов
+                //Mark: - carousele
                 VStack(alignment: .leading, spacing: 2) {
                     Text(category.titleText())
                         .font(.title.bold())

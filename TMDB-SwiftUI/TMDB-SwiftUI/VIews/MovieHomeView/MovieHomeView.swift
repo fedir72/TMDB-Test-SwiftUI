@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MovieHomeView: View {
     var body: some View {
-      NavigationView {
         List {
           MovieCarouselView(category: .upcoming,   cardType: .poster)
           MovieCarouselView(category: .nowPlaying, cardType: .backdrop)
@@ -20,7 +19,6 @@ struct MovieHomeView: View {
         }
         .padding(.horizontal, -10)
         .navigationTitle("The Movie Database")
-      }
     }
 }
 

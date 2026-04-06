@@ -26,7 +26,7 @@ struct MovieDetailView: View {
       } else if let movie = viewModel.movieDetail {
         ScrollView {
           VStack(alignment: .leading, spacing: 10) {
-          
+            
             HStack(alignment: .top, spacing: 16) {
               if let posterURL = movie.posterURL {
                 WebImage(url: posterURL)
@@ -49,21 +49,18 @@ struct MovieDetailView: View {
                     .foregroundColor(.secondary)
                 }
                 
+                if let runtime = movie.runtime {
+                  Text("\(runtime) min")
+                }
+                Text("Release: \(movie.releaseDate ?? "N/A")")
+                  .font(.subheadline)
+                  .foregroundColor(.secondary)
                 if let tagline = movie.tagline {
                   Text(tagline)
                     .font(.subheadline)
                     .italic()
                     .foregroundColor(.secondary)
                 }
-                
-                HStack {
-                  if let runtime = movie.runtime {
-                    Text("\(runtime) min")
-                  }
-                  Text("Release: \(movie.releaseDate ?? "N/A")")
-                }
-                .font(.subheadline)
-                .foregroundColor(.secondary)
               }
             }
             
@@ -90,7 +87,7 @@ struct MovieDetailView: View {
               InfoBlockView(title: "Companies",
                             content: companies.compactMap { $0.name }.joined(separator: ", "))
             }
-           
+            
             if let countries = movie.productionCountries, !countries.isEmpty {
               InfoBlockView(title: "Production countries",
                             content: countries.compactMap { $0.name }.joined(separator: ", "))
@@ -119,7 +116,6 @@ struct MovieDetailView: View {
       }
     }
     .navigationBarTitleDisplayMode(.inline)
-    
   }
   
   @ViewBuilder
@@ -142,61 +138,5 @@ struct MovieDetailView: View {
       .padding(.bottom, 10)
     }
   }
-}
-
-// MARK: - StarRatingView
-struct StarRatingView: View {
-    let rating: Double
-    var body: some View {
-        HStack(spacing: 2) {
-            ForEach(1...10, id: \.self) { index in
-                Image(systemName: index <= Int(round(rating)) ? "star.fill" : "star")
-                    .foregroundColor(index <= Int(round(rating)) ? .yellow : .gray)
-            }
-        }
-    }
-}
-
-//MARK: - VideoItemRow
-struct VideoItemRow: View {
-  let video: MovieVideo
-  var body: some View {
-    HStack {
-      Image(systemName: "play.rectangle.fill")
-        .foregroundColor(.red)
-        .imageScale(.large)
-      VStack(alignment: .leading, spacing: 4) {
-        Text(video.name)
-          .font(.subheadline)
-          .foregroundColor(.primary)
-          .lineLimit(1)
-        Text(video.site)
-          .font(.caption)
-          .foregroundColor(.secondary)
-      }
-      Spacer()
-      Image(systemName: "chevron.right")
-        .foregroundColor(.secondary)
-    }
-    .padding(.horizontal)
-  }
-  
-}
-
-struct InfoBlockView: View {
-    let title: String
-    let content: String?
-
-    var body: some View {
-        if let content = content, !content.isEmpty {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .movieTitleStyle()
-                Text(content)
-                    .font(.body)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-        }
-    }
 }
 
